@@ -145,12 +145,11 @@ STATIC_URL = '/static/'
 
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_src'),  # If static files are in this folder
-    os.path.join(BASE_DIR, 'staticfiles'),  # If static files are in this folder
+    os.path.join(BASE_DIR, 'static_src'),  # Directory with static files to collect
 ]
 
 # STATIC_ROOT = BASE_DIR / "staticfiles" 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory to collect the files into
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
