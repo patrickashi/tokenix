@@ -7,7 +7,7 @@ debug.log
 # Python
 __pycache__/
 *.py[cod]
-*.sqlite3
+
 
 # Django
 *.pyc
