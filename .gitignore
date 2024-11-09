@@ -1,0 +1,23 @@
+# Logs
+*.log
+
+# Ignore debug logs
+debug.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Django
+*.pyc
+*.env
+db.sqlite3
+media/
+static/
+
+node_modules/
+
+# Operating system files
+.DS_Store
+Thumbs.db

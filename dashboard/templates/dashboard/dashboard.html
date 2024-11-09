@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="flex  px-2 py-4 flex-col mt-4 justify-between rounded-none bg-[#020617] text-gray-200  ">
+  <div>
+    <h1 class="text-white text-xl font-bold">Welcome back, {{ firstname }}!</h1>
+    <p class="text-xs mt-2">The Currencies you have purchased are here.</p>
+  </div>
+
+  <div class="flex flex-col md:flex-row justify-between py-2 ">
+
+
+    <div class="flex font-thin text-2xl">
+      <div class="text-gray-200 mr-2">Lite Coin</div>
+      <div class="text-gray-200">BTC/USD</div>
+    </div>
+    <div class="hidden md:block">
+      <p class="text-xs">
+        <span class="text-[#fbbf24]">37,390.00129.51+0.8%</span>37,440.0137,327.30
+      </p>
+      <div class="flex gap-2 text-xs">
+        <div>$37,390.0024th</div>
+        <div>24th high 24th low</div>
+      </div>
+      <p>changes</p>
+    </div>
+
+  </div>
+
+  <!-- <div class=" justify-center items-center w-80 hidden md:block ml-4">
+      <img src="{% static 'images/space2.jpg' %}" alt="anm" class="w-full h-full object-cover rounded-r-lg" width="100px">
+  </div> -->
+
+  <div class="flex flex-wrap mt-4 text-gray-200">
+    <div class="bg-[#0f172a]  text-xl w-full md:w-60 px-4 py-10 mb-2 mr-4 rounded-lg">
+      <div class="flex">
+        <img src="{% static 'images/bitcoin.png' %}" alt="db" class="w-5 mr-2 ml-4 text-gray-200" width="25px">
+        <p class="">Bitcoin</p>
+        <img src="{% static 'images/grow-up.png' %}" alt="db" class="w-5 mr-2 ml-4 text-gray-200" width="25px">
+      </div>
+      
+      <p class="font-semibold">${{ btc_balance }}</p>
+      <p class="text-sm text-[#15803d]">+0.8%</p>
+    </div>
+  
+    <div class="bg-[#0f172a] text-xl w-full md:w-60 px-4 py-10 mb-2 mr-4 rounded-lg">
+      <div class="flex">
+        <img src="{% static 'images/dash.png' %}" alt="db" class="w-5 mr-2 ml-4 text-gray-200" width="25px">
+        <p class="">Dash</p>
+        <img src="{% static 'images/grow-up.png' %}" alt="db" class="w-5 mr-2 ml-4 text-gray-200" width="25px">
+      </div>
+      <p class="font-semibold">${{ dash_balance }}</p>
+      <p class="text-sm text-[#15803d]">+0.8%</p>
+    </div>
+    <div class="bg-[#0f172a] text-xl w-full md:w-60 px-4 py-10 mb-2 mr-4 rounded-lg">
+      <div class="flex">
+        <img src="{% static 'images/ethereum.png' %}" alt="db" class="w-5 mr-2 ml-4 text-gray-200" width="25px">
+        <p class="">Ethereum</p>
+        <img src="{% static 'images/grow-up.png' %}" alt="db" class="w-5 mr-2 ml-4 text-gray-200" width="25px">
+      </div>
+      <p class="font-semibold">${{ ethereum_balance }}</p>
+      <p class="text-sm text-[#15803d]">+0.8%</p>
+    </div>
+
+
+   
+</div>
+
+
+
+  
+
+
+
+</div>
+
+
+
+<script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-1" lcw-coin="BTC" lcw-base="USD" lcw-secondary="BTC" lcw-period="d" lcw-color-tx="#ffffff" lcw-color-pr="#fcb900" lcw-color-bg="#202334" lcw-border-w="0" ></div>
+
+
+
+
+
+
+
+
+
+
+    
+
+{% endblock %}
+
+
+
