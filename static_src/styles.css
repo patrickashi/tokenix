@@ -32,8 +32,8 @@ button[type="submit"] {
 }
 
 input, select, textarea {
-    background-color: #1e293b; /* Dark background color */
-    color: white; /* White text color */
+    /* background-color: ; Dark background color */
+    color: #1e293b; /* White text color */
     border: 1px solid #4b5563; /* Light border color */
     padding: 0.5rem;
     border-radius: 0.375rem;
