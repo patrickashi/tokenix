@@ -143,10 +143,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# Directories to find static files during development
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_src'),  # If static files are in this folder
-    os.path.join(BASE_DIR, 'staticfiles'),  # If static files are in this folder
+    os.path.join(BASE_DIR, 'static'),  # Points to your development static folder
 ]
 
 # STATIC_ROOT = BASE_DIR / "staticfiles" 

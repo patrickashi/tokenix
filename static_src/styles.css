@@ -18,7 +18,7 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
     border: 1px solid #ccc; /* Ensure border is applied */
     border-radius: 4px;
     font-size: 16px;
-    background-color: #fff; /* Set background color if needed */
+    background-color:; /* Set background color if needed */
 }
 
 button[type="submit"] {
@@ -30,6 +30,21 @@ button[type="submit"] {
     border-radius: 4px;
     font-size: 16px;
 }
+
+input, select, textarea {
+    background-color: #1e293b; /* Dark background color */
+    color: white; /* White text color */
+    border: 1px solid #4b5563; /* Light border color */
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #f59e0b; /* Blue border when focused */
+    outline: none; /* Remove default outline */
+}
+
 
 
  
