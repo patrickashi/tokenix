@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bg-white py-10 px-8 mx-2 rounded-md">
+    <div class="">
+        <h2 class="mb-4 font-semibold">Please Confirm your Deposit</h2>
+        <p>Plan: {{ invest.get_plan_display }}</p>
+        <p>Spent Amount: ${{ invest.spent_amount }}</p>
+        <p>Profit: {{ invest.profit_percentage }}%</p>
+        <p class="mt-10 mb-4">Bitcoin Address: ZhShgsbII6evkxxkbxmxnx</p>
+    </div>
+    
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <label for="transaction_id">Transaction ID:</label>
+            <input type="text" id="transaction_id" name="transaction_id" required>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

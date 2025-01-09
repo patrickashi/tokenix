@@ -72,3 +72,21 @@ class DASH(CryptoBase):
 
 class Ethereum(CryptoBase):
     pass
+
+class Invest(models.Model):
+    PLAN_CHOICES = [
+        ('standard', 'Standard Plan'),
+        ('expert', 'Expert Plan'),
+        ('ultimate', 'Ultimate Plan'),
+        ('long_term', 'Long Term Investment Stacking'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    plan = models.CharField(max_length=20, choices=PLAN_CHOICES)
+    spent_amount = models.DecimalField(max_digits=15, decimal_places=2)
+    profit_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    transaction_id = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.plan}"

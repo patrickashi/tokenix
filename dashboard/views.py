@@ -16,11 +16,14 @@ from .models import Student
 from .models import Notification
 from .models import Feedback
 from .models import BTC, DASH, Ethereum
+from .models import Invest
+
 
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegistrationForm, StudentProfileForm
 from .forms import FeedbackForm
 from .forms import StudentUpdateForm
+from .forms import InvestForm
 
 import csv
 
@@ -212,3 +215,65 @@ def send_notification(request):
         return redirect("notifications")
 
     return render(request, "dashboard/send_notification.html")
+
+def invest_page(request):
+    if request.method == 'POST':
+        form = InvestForm(request.POST)
+        if form.is_valid():
+            invest = form.save(commit=False)
+            invest.user = request.user
+
+            # Validate spent amount based on selected plan
+            error_message = None
+            profit_percentage = None
+
+            if invest.plan == 'standard':
+                if not (10000 <= invest.spent_amount <= 49999):
+                    error_message = 'Invalid spent amount for the Standard Plan.'
+                else:
+                    profit_percentage = 18.00
+            elif invest.plan == 'expert':
+                if not (50000 <= invest.spent_amount <= 199999):
+                    error_message = 'Invalid spent amount for the Expert Plan.'
+                else:
+                    profit_percentage = 25.50
+            elif invest.plan == 'ultimate':
+                if not (200000 <= invest.spent_amount <= 499999):
+                    error_message = 'Invalid spent amount for the Ultimate Plan.'
+                else:
+                    profit_percentage = 32.20
+            elif invest.plan == 'long_term':
+                if not (500000 <= invest.spent_amount <= 500000000):
+                    error_message = 'Invalid spent amount for Long Term Investment.'
+                else:
+                    profit_percentage = 36.00
+
+            # If there's an error, re-render the form with the error message
+            if error_message:
+                return render(request, 'dashboard/invest_page.html', {
+                    'form': form,
+                    'error': error_message,
+                })
+
+            # Save the profit percentage and the instance
+            invest.profit_percentage = profit_percentage
+            invest.save()
+            
+            # Redirect to confirmation page
+            return redirect('confirm_deposit', invest_id=invest.id)
+    else:
+        form = InvestForm()
+
+    return render(request, 'dashboard/invest_page.html', {'form': form})
+
+
+def confirm_deposit(request, invest_id):
+    invest = get_object_or_404(Invest, id=invest_id, user=request.user)
+    if request.method == 'POST':
+        transaction_id = request.POST.get('transaction_id')
+        if transaction_id:
+            invest.transaction_id = transaction_id
+            invest.save()
+            messages.success(request, "The deposit has been saved. It will become active when the administrator checks statistics.")
+            return redirect('invest_page')  # Redirect to dashboard or another page
+    return render(request, 'dashboard/confirm_deposit.html', {'invest': invest})

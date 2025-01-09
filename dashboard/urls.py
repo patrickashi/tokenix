@@ -21,6 +21,8 @@ urlpatterns = [
     path('send-notification/', views.send_notification, name='send_notification'),
     path('notifications/unread_count/', views.get_unread_notification_count, name='unread_notification_count'),
 
+    path('invest/', views.invest_page, name='invest_page'),
+    path('confirm-deposit/<int:invest_id>/', views.confirm_deposit, name='confirm_deposit'),
 ]
 
 if settings.DEBUG:

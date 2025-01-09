@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bg-white py-6 px-4 rounded-md shadow-md">
+    <h2 class="text-xl font-semibold mb-4">Choose Your Investment Plan</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Display error messages -->
+        {% if error %}
+            <p class="text-red-500 text-sm mb-4">{{ error }}</p>
+        {% endif %}
+
+        {% if messages %}
+            <div class=" top-0 right-4 mb-2  px-4 py-2 rounded">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <!-- Plans Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full border border-gray-300 text-sm mb-4">
+                <thead class="bg-gray-200 text-gray-700">
+                    <tr>
+                        <th class="py-1 px-2 border">Plan</th>
+                        <th class="py-1 px-2 border">Amount Range</th>
+                        <th class="py-1 px-2 border">Profit (%)</th>
+                        <th class="py-1 px-2 border">Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="py-1 px-2 border">Standard Plan</td>
+                        <td class="py-1 px-2 border">$10,000 - $49,999</td>
+                        <td class="py-1 px-2 border">18.00%</td>
+                        <td class="py-1 px-2 border">
+                            <input type="radio" name="plan" value="standard" 
+                                   onclick="updateSpentAmount('standard')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-1 px-2 border">Expert Plan</td>
+                        <td class="py-1 px-2 border">$50,000 - $199,999</td>
+                        <td class="py-1 px-2 border">25.50%</td>
+                        <td class="py-1 px-2 border">
+                            <input type="radio" name="plan" value="expert" 
+                                   onclick="updateSpentAmount('expert')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-1 px-2 border">Ultimate Plan</td>
+                        <td class="py-1 px-2 border">$200,000 - $499,999</td>
+                        <td class="py-1 px-2 border">32.20%</td>
+                        <td class="py-1 px-2 border">
+                            <input type="radio" name="plan" value="ultimate" 
+                                   onclick="updateSpentAmount('ultimate')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-1 px-2 border">Long Term Investment</td>
+                        <td class="py-1 px-2 border">$500,000 - $500,000,000</td>
+                        <td class="py-1 px-2 border">36.00%</td>
+                        <td class="py-1 px-2 border">
+                            <input type="radio" name="plan" value="long_term" 
+                                   onclick="updateSpentAmount('long_term')">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Spent Amount Field -->
+        <div class="mb-3">
+            <label for="id_spent_amount" class="text-sm font-medium">{{ form.spent_amount.label }}</label>
+            {{ form.spent_amount }}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="mt-4 text-white text-sm py-2 px-4 rounded">
+            Proceed
+        </button>
+    </form>
+</div>
+
+<!-- JavaScript for dynamic spent amount -->
+<script>
+    function updateSpentAmount(plan) {
+        let amountField = document.getElementById("id_spent_amount");
+        if (plan === "standard") {
+            amountField.value = 10000; // Default minimum for Standard Plan
+        } else if (plan === "expert") {
+            amountField.value = 50000; // Default minimum for Expert Plan
+        } else if (plan === "ultimate") {
+            amountField.value = 200000; // Default minimum for Ultimate Plan
+        } else if (plan === "long_term") {
+            amountField.value = 500000; // Default minimum for Long Term Investment
+        } else {
+            amountField.value = ""; // Reset if no valid plan is selected
+        }
+    }
+</script>
+
+{% endblock %}
