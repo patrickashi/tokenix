@@ -6,7 +6,8 @@ from .views import custom_login
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),
+    path('', views.home, name='home'),
+    path('dashboard/', views.dashboard, name='dashboard'),
     path('register/', views.register, name='register'),
     path('register_student/', views.register_student, name='register_student'),
     path('login/', custom_login, name='login'),

@@ -277,3 +277,5 @@ def confirm_deposit(request, invest_id):
             messages.success(request, "The deposit has been saved. It will become active when the administrator checks statistics.")
             return redirect('invest_page')  # Redirect to dashboard or another page
     return render(request, 'dashboard/confirm_deposit.html', {'invest': invest})
+def home(request):
+    return render(request, 'home.html')

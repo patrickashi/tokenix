@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Tokenix</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav {
+            background-color: #1a202c;
+            padding: 0.8rem 1rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            padding: 0.5rem 0.8rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #2d3748;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 3px 0;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #1a202c;
+            padding: 1rem;
+        }
+
+        .mobile-nav a {
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: none;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .main-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .main-content p {
+            font-size: 1rem;
+            color: #4a5568;
+        }
+
+        .cta-btn {
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            background-color: #f59e0b;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class=" flex align-middle justify-center">
+                <img src="{% static 'images/tokenix.png' %}" alt="db" class="w-40 mr-2 ml-4 text-gray-200" width="25px">
+            </div>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'login' %}">Invest</a>
+                <a >About</a>
+                <a >Contact</a>
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+            <div class="hamburger" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'login' %}">Invest</a>
+        <a >About</a>
+        <a >Contact</a>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+    <div class="main-content">
+        <h1>Welcome to Tokenix</h1>
+        <p>Your trusted platform for secure investments and financial growth.</p>
+        <a href="{% url 'login' %}">
+            <button class="cta-btn">Get Started</button>
+        </a>
+    </div>
+
+    <footer class="bg-[#1a202c]  py-8">
+        <div class="max-w-6xl mx-auto px-4 bg-[#1a202c]">
+            <!-- Top Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About Section -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">About Tokenix</h3>
+                    <p class="text-sm text-gray-400">
+                        Tokenix is your trusted platform for secure investments and financial growth. Join us to make your money work for you.
+                    </p>
+                </div>
+    
+                <!-- Links Section -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul>
+                        <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-gray-200 text-sm">Home</a></li>
+                        <li><a href="{% url 'login' %}" class="text-gray-400 hover:text-gray-200 text-sm">Invest</a></li>
+                        <li><a href="{% url 'login' %}" class="text-gray-400 hover:text-gray-200 text-sm">About</a></li>
+                        <li><a href="{% url 'login' %}" class="text-gray-400 hover:text-gray-200 text-sm">Contact</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Section -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+                    <p class="text-sm text-gray-400">Email: support@tokenix.com</p>
+                    <p class="text-sm text-gray-400">Phone: +123-456-7890</p>
+                    <p class="text-sm text-gray-400">Address: 123 Tokenix Ave, Financial City</p>
+                </div>
+            </div>
+    
+            <!-- Bottom Section -->
+            <div class="mt-8 border-t border-gray-700 pt-4 text-center">
+                <p class="text-sm text-gray-500">
+                    © 2025 Tokenix. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
