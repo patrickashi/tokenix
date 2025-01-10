@@ -2,6 +2,12 @@ import os
 
 from pathlib import Path
 from corsheaders.defaults import default_headers
+import dj_database_url
+
+
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -99,12 +105,33 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')  # default for local development
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'tokenix',
+#         'USER': 'tokenix_user',
+#         'PASSWORD': 'RqSwNClWye7KA0E2Gp1npS8jOYu70K7q',
+#         'HOST': 'tokenix.onrender.com',  # Render database host address
+#         'PORT': '5432',      # Default PostgreSQL port
+#     }
+# }
+# # You can also explicitly specify the ENGINE as follows:
+# DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -217,4 +244,5 @@ LOGGING = {
     },
 }
 
+# vbdQGyUSxk7XDuKT
 
