@@ -381,7 +381,7 @@
                     <button id="prev-btn" class="bg-[#1a202c] text-white rounded-full p-2 hover:bg-gray-700">&#9664;</button>
                 </div>
                 <div class="absolute top-1/2 right-4 transform -translate-y-1/2">
-                    <button id="next-btn" class="bg-[#1a202c] text-white rounded-full p-2  hover:bg-gray-700">&#9654;</button>
+                    <button id="next-btn" class="bg-[#1a202c] text-white rounded-full p-2 hover:bg-gray-700">&#9654;</button>
                 </div>
             </div>
         </div>
@@ -443,26 +443,53 @@
         const nextBtn = document.getElementById('next-btn');
 
         let currentIndex = 0;
+        const slideInterval = 5000; // Time between slides in milliseconds
+        let autoSlideInterval;
 
         function updateSliderPosition() {
             slider.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
-        prevBtn.addEventListener('click', () => {
+        function showNextSlide() {
+            currentIndex = (currentIndex === slider.children.length - 1) ? 0 : currentIndex + 1;
+            updateSliderPosition();
+        }
+
+        function showPrevSlide() {
             currentIndex = (currentIndex === 0) ? slider.children.length - 1 : currentIndex - 1;
             updateSliderPosition();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(showNextSlide, slideInterval);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Event listeners for buttons
+        prevBtn.addEventListener('click', () => {
+            stopAutoSlide(); // Stop auto-slide temporarily
+            showPrevSlide();
+            startAutoSlide(); // Restart auto-slide
         });
 
         nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex === slider.children.length - 1) ? 0 : currentIndex + 1;
-            updateSliderPosition();
+            stopAutoSlide(); // Stop auto-slide temporarily
+            showNextSlide();
+            startAutoSlide(); // Restart auto-slide
         });
+
+        // Start the auto-slide when the page loads
+        document.addEventListener('DOMContentLoaded', startAutoSlide);
+
 
         // counter script
         document.addEventListener("DOMContentLoaded", function () {
             const counterElement = document.getElementById("user-counter");
-            const target = 103; // Fixed number of registered users
-            const duration = 2000; // Duration of animation in milliseconds
+            const target = 5778; // Fixed number of registered users
+            const duration = 6000; // Duration of animation in milliseconds
             const interval = 20; // Time between increments
 
             let current = 0;
