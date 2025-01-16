@@ -130,6 +130,19 @@
         .cta-btn:hover {
             background-color: #f59e0b;
         }
+        .counter-section {
+        text-align: center;
+        margin: 50px 0;
+    }
+    .counter-section h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .counter {
+        font-size: 26px;
+        color: #f59e0b;
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -146,7 +159,7 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
-    
+
 <body>
     <nav>
         <div class="nav-container">
@@ -156,7 +169,7 @@
             <div class="nav-links">
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'login' %}">Invest</a>
-                <a >Contact</a>
+                <a href="{% url 'contact' %}">Contact</a>
                 <a href="{% url 'login' %}">Login</a>
             </div>
             <div class="hamburger" onclick="toggleMobileNav()">
@@ -169,12 +182,16 @@
     <div class="mobile-nav" id="mobile-nav">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'login' %}">Invest</a>
-        <a >Contact</a>
+        <a href="{% url 'contact' %}">Contact</a>
         <a href="{% url 'login' %}">Login</a>
     </div>
     <div class="main-content">
         <h1>Welcome to Tokenix</h1>
         <p>Your trusted platform for secure investments and financial growth.</p>
+        <div class="counter-section">
+            <h2 class="text-lg">Registered Users</h2>
+            <p class="counter text-xl" id="user-counter">0</p>
+        </div> 
         <a href="{% url 'login' %}">
             <button class="cta-btn">Get Started</button>
         </a>
@@ -272,6 +289,105 @@
         </div>
     </section>
 
+    <section class="bg-gray-100 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">What Our Clients Say</h2>
+            
+            <div class="relative overflow-hidden">
+                <div id="testimonial-slider" class="flex transition-transform duration-500 ease-in-out">
+                    <!-- Testimonial 1 -->
+                    <div class="min-w-full px-4">
+                        <div class="bg-white shadow-md rounded-md p-6">
+                            <p class="text-gray-600 italic">"Tokenix has completely transformed my investment strategy. Their platform is secure, user-friendly, and profitable. Highly recommended!"</p>
+                            <div class="mt-4 flex items-center justify-center">
+                                <div>
+                                    <img src="{% static 'images/client1.jpg' %}" alt="client" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-800 font-bold">Emma Sullivan</p>
+                                    <p class="text-sm text-gray-500">Investor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="min-w-full px-4">
+                        <div class="bg-white shadow-md rounded-md p-6">
+                            <p class="text-gray-600 italic">"The best decision I made for my crypto portfolio was joining Tokenix. Their support team is top-notch!"</p>
+                            <div class="mt-4 flex items-center justify-center">
+                                <div>
+                                    <img src="{% static 'images/client2.jpg' %}" alt="client" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-800 font-bold">Oliver Davies</p>
+                                    <p class="text-sm text-gray-500">Entrepreneur</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="min-w-full px-4">
+                        <div class="bg-white shadow-md rounded-md p-6">
+                            <p class="text-gray-600 italic">"Tokenix stands out for their integrity and excellent returns. A truly exceptional investment platform!"</p>
+                            <div class="mt-4 flex items-center justify-center">
+                                <div>
+                                    <img src="{% static 'images/client3.jpg' %}" alt="client" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-800 font-bold">Sophia Carter</p>
+                                    <p class="text-sm text-gray-500">Crypto Enthusiast</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Testimonial 4 -->
+                    <div class="min-w-full px-4">
+                        <div class="bg-white shadow-md rounded-md p-6">
+                            <p class="text-gray-600 italic">"Tokenix offers the best investment plans on the market. Their strategies are unbeatable!"</p>
+                            <div class="mt-4 flex items-center justify-center">
+                                <div>
+                                    <img src="{% static 'images/client4.jpg' %}" alt="client" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-800 font-bold">Arjun Sharma</p>
+                                    <p class="text-sm text-gray-500">CEO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Testimonial 5 -->
+                    <div class="min-w-full px-4">
+                        <div class="bg-white shadow-md rounded-md p-6">
+                            <p class="text-gray-600 italic">"Their long-term investment plan is unmatched. I’m seeing incredible growth!"</p>
+                            <div class="mt-4 flex items-center justify-center">
+                                <div>
+                                    <img src="{% static 'images/client5.jpg' %}" alt="client" class="w-12 h-12 rounded-full object-cover">
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-800 font-bold">David Wilson</p>
+                                    <p class="text-sm text-gray-500">Investor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Navigation Buttons -->
+                <div class="absolute top-1/2 left-4 transform -translate-y-1/2">
+                    <button id="prev-btn" class="bg-[#1a202c] text-white rounded-full p-2 hover:bg-gray-700">&#9664;</button>
+                </div>
+                <div class="absolute top-1/2 right-4 transform -translate-y-1/2">
+                    <button id="next-btn" class="bg-[#1a202c] text-white rounded-full p-2  hover:bg-gray-700">&#9654;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section class="px-4 max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row gap-4 py-8 justify-center mx-2 items-center">
             <!-- Text Content -->
@@ -299,12 +415,13 @@
             <!-- Top Section -->
             <div class="flex justify-center gap-8">
                 <div>
-                    <p class="text-sm text-gray-400">Email: tokenixcc@gmail.com</p>
+                    <p class="text-sm text-gray-400 text-center">Email: tokenixcc@gmail.com</p>
+                    <p class="text-sm text-gray-400 text-center">123 Elm Street, Kensington, London, SW7 4ET, United Kingdom</p>
                 </div>
             </div>
     
             <!-- Bottom Section -->
-            <div class="mt-8 mb-4 border-t border-gray-700 pt-4 text-center">
+            <div class="mt-4 mb-2 border-t border-gray-700 pt-4 text-center">
                 <p class="text-sm text-gray-500">
                     © 2025 Tokenix All rights reserved.
                 </p>
@@ -314,10 +431,52 @@
 
     
     <script>
+        // toggle script
         function toggleMobileNav() {
             const mobileNav = document.getElementById('mobile-nav');
             mobileNav.classList.toggle('active');
         }
+
+        // testimonials script
+        const slider = document.getElementById('testimonial-slider');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        let currentIndex = 0;
+
+        function updateSliderPosition() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? slider.children.length - 1 : currentIndex - 1;
+            updateSliderPosition();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === slider.children.length - 1) ? 0 : currentIndex + 1;
+            updateSliderPosition();
+        });
+
+        // counter script
+        document.addEventListener("DOMContentLoaded", function () {
+            const counterElement = document.getElementById("user-counter");
+            const target = 103; // Fixed number of registered users
+            const duration = 2000; // Duration of animation in milliseconds
+            const interval = 20; // Time between increments
+
+            let current = 0;
+            const increment = Math.ceil(target / (duration / interval));
+
+            const animateCounter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target; // Ensure the final value is exact
+                    clearInterval(animateCounter);
+                }
+                counterElement.textContent = current;
+            }, interval);
+        });
     </script>
 </body>
 </html>

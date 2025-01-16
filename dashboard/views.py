@@ -279,3 +279,5 @@ def confirm_deposit(request, invest_id):
     return render(request, 'dashboard/confirm_deposit.html', {'invest': invest})
 def home(request):
     return render(request, 'home.html')
+def contact(request):
+    return render(request, 'contact.html')
