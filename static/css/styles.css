@@ -949,6 +949,10 @@ video {
   font-size: 3.75rem;
   line-height: 1;
 }
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -961,10 +965,6 @@ video {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
 .font-bold {
   font-weight: 700;
 }
@@ -976,6 +976,9 @@ video {
 }
 .font-thin {
   font-weight: 100;
+}
+.capitalize {
+  text-transform: capitalize;
 }
 .italic {
   font-style: italic;

@@ -189,8 +189,13 @@
         <h1>Welcome to Tokenix</h1>
         <p>Your trusted platform for secure investments and financial growth.</p>
         <div class="counter-section">
-            <h2 class="text-lg">Registered Users</h2>
+            <h2 class="text-lg">Active Users</h2>
             <p class="counter text-xl" id="user-counter">0</p>
+        </div> 
+        <!-- counter2 -->
+        <div class="counter-section">
+            <h2 class="text-lg">Total Profits</h2>
+            <p class="counter text-xl" id="user-counter2">0</p>
         </div> 
         <a href="{% url 'login' %}">
             <button class="cta-btn">Get Started</button>
@@ -272,7 +277,7 @@
                     <p class="pb-4">after 30days</p>
                 </div>
                 <div class="p-8 space-y-4 px-4 mt-2">
-                    <p class="text-gray-600 text-center">Minimum Deposit - $500000</p>
+                    <p class="text-gray-600 text-center">Minimum Deposit - $5000000</p>
                     <p class="text-gray-600 text-center">Maximum Deposit - $500000000</p>
                     <p class="text-gray-600 text-center">Referral bonus - 8%</p>
                     <p class="text-gray-600 text-center">Enhanced Security</p>
@@ -402,11 +407,53 @@
                     we empower you to achieve financial growth and long-term success in the crypto space.
                 </p>
             </div>
-    
             <!-- Image Placeholder -->
             <div class="bg-gray-200 rounded-lg w-full md:w-40">
                 <img src="{% static 'images/sensational.jpeg' %}" alt="db" class="w-full rounded-md mt-4 text-gray-200" width="200px">
             </div>
+        </div>
+    </section>
+
+    <!-- Vision -->
+    <section class="px-4 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-4 py-8 justify-center mx-2 items-center">
+            <!-- Text Content -->
+            <div class="w-full px-0 md:px-4">
+                <h2 class="text-3xl font-bold text-gray-900 my-4">Vision</h2>
+                
+                <p class="text-gray-600 text-sm">
+                    At Tokenix, we aim to empower our investors to capitalize on the revolutionary potential of cryptocurrency.
+                    As digital assets continue to redefine the global financial landscape, our commitment is to ensure our
+                    clients are at the forefront of this transformation, securing their future in an ever-changing market.
+                    Together, we embrace innovation, profitability, and a secure path toward financial success.
+                </p>
+            </div>
+            <!-- Image Placeholder -->
+            <!-- <div class="bg-gray-200 rounded-lg w-full md:w-40">
+                <img src="{% static 'images/sensational.jpeg' %}" alt="db" class="w-full rounded-md mt-4 text-gray-200" width="200px">
+            </div> -->
+        </div>
+    </section>
+
+    <!-- mission -->
+    <section class="px-4 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-4 py-8 justify-center mx-2 items-center">
+            <!-- Text Content -->
+            <div class="w-full px-0 md:px-4">
+                <h2 class="text-3xl font-bold text-gray-900 my-4">Mission</h2>
+                
+                <p class="text-gray-600 text-sm">
+                    Tokenix is dedicated to providing secure, high-quality crypto investment opportunities, designed
+                    to meet the unique needs of each investor. Through cutting-edge technology, expert insights,
+                    and strategic plans, we help our clients unlock consistent profits while navigating the
+                    dynamic world of digital finance. With Tokenix, you’re not just investing in crypto—you’re
+                    securing your future in the next wave of financial evolution.
+                </p>
+            </div>
+            <!-- Image Placeholder -->
+            <!-- <div class="bg-gray-200 rounded-lg w-full md:w-40">
+                <img src="{% static 'images/sensational.jpeg' %}" alt="db" class="w-full rounded-md mt-4 text-gray-200" width="200px">
+            </div> -->
         </div>
     </section>
 
@@ -488,8 +535,28 @@
         // counter script
         document.addEventListener("DOMContentLoaded", function () {
             const counterElement = document.getElementById("user-counter");
-            const target = 5778; // Fixed number of registered users
-            const duration = 6000; // Duration of animation in milliseconds
+            const target = 1264182; // Fixed number of registered users
+            const duration = 4000; // Duration of animation in milliseconds
+            const interval = 20; // Time between increments
+
+            let current = 0;
+            const increment = Math.ceil(target / (duration / interval));
+
+            const animateCounter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target; // Ensure the final value is exact
+                    clearInterval(animateCounter);
+                }
+                counterElement.textContent = current;
+            }, interval);
+        });
+
+            // counter script2
+            document.addEventListener("DOMContentLoaded", function () {
+            const counterElement = document.getElementById("user-counter2");
+            const target = 245848992; // Fixed number of registered users
+            const duration = 5000; // Duration of animation in milliseconds
             const interval = 20; // Time between increments
 
             let current = 0;
