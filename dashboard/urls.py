@@ -25,6 +25,7 @@ urlpatterns = [
 
     path('invest/', views.invest_page, name='invest_page'),
     path('confirm-deposit/<int:invest_id>/', views.confirm_deposit, name='confirm_deposit'),
+    path('withdraw/', views.withdraw, name='withdraw')
 ]
 
 if settings.DEBUG:

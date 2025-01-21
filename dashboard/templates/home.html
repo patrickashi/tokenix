@@ -531,7 +531,6 @@
         // Start the auto-slide when the page loads
         document.addEventListener('DOMContentLoaded', startAutoSlide);
 
-
         // counter script
         document.addEventListener("DOMContentLoaded", function () {
             const counterElement = document.getElementById("user-counter");
@@ -548,29 +547,32 @@
                     current = target; // Ensure the final value is exact
                     clearInterval(animateCounter);
                 }
-                counterElement.textContent = current;
+
+                // Format the current value with commas
+                counterElement.textContent = current.toLocaleString();
             }, interval);
         });
+        // counter script2
+        document.addEventListener("DOMContentLoaded", function () {
+        const counterElement = document.getElementById("user-counter2");
+        const target = 1245848992; // Fixed number of registered users
+        const duration = 5000; // Duration of animation in milliseconds
+        const interval = 20; // Time between increments
 
-            // counter script2
-            document.addEventListener("DOMContentLoaded", function () {
-            const counterElement = document.getElementById("user-counter2");
-            const target = 245848992; // Fixed number of registered users
-            const duration = 5000; // Duration of animation in milliseconds
-            const interval = 20; // Time between increments
+        let current = 0;
+        const increment = Math.ceil(target / (duration / interval));
 
-            let current = 0;
-            const increment = Math.ceil(target / (duration / interval));
-
-            const animateCounter = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target; // Ensure the final value is exact
-                    clearInterval(animateCounter);
-                }
-                counterElement.textContent = current;
-            }, interval);
-        });
+        const animateCounter = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target; // Ensure the final value is exact
+                clearInterval(animateCounter);
+            }
+            
+            // Format the current value with commas and add a dollar sign in front
+            counterElement.textContent = "$" + current.toLocaleString() + " Billion Dollars Disbursed";
+        }, interval);
+    });
     </script>
 </body>
 </html>

@@ -88,9 +88,10 @@ class FeedbackForm(forms.ModelForm):
 class InvestForm(forms.ModelForm):
     class Meta:
         model = Invest
-        fields = ['plan', 'spent_amount']
+        fields = ['plan', 'spent_amount', 'crypto']  # Include 'crypto'
         widgets = {
-            'plan': forms.RadioSelect,
+            'plan': forms.RadioSelect,  # Plan as a radio button
+            'crypto': forms.Select(attrs={'class': 'form-control'}),  # Crypto as a dropdown
         }
 
     def __init__(self, *args, **kwargs):
@@ -100,4 +101,9 @@ class InvestForm(forms.ModelForm):
             ('expert', 'Expert Plan ($50,000 - $199,999, Profit: 25.50%)'),
             ('ultimate', 'Ultimate Plan ($200,000 - $499,999, Profit: 32.20%)'),
             ('long_term', 'Long Term Investment ($500,000 - $500,000,000, Profit: 36.00%)'),
+        ]
+        self.fields['crypto'].choices = [
+            ('BTC', 'Bitcoin (BTC)'),
+            ('ETH', 'Ethereum (ETH)'),
+            ('USDT', 'Tether (USDT)'),
         ]
