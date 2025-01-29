@@ -4,7 +4,7 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact</title>
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="{% static 'images/tokenix.png' %}" type="image/x-icon" />
@@ -271,23 +271,12 @@
         <p>We'd love to hear from you! Feel free to reach out with any questions or feedback.</p>
     </header>
 
-    <div class="contact-container">
-        <h2>Send Us a Message</h2>
-        <form action="{% url 'contact' %}" method="POST">
-            {% csrf_token %}
-            <label>
-                Your email:
-                <input type="email" name="email" required placeholder="Enter your email">
-            </label>
-            <label>
-                Your message:
-                <textarea name="message" required placeholder="Enter your message" rows="5"></textarea>
-            </label>
-            <button type="submit">Send</button>
-        </form>
+    <div class="success-container py-10 flex flex-col justify-center mt-20">
+        <h2 class="mt-8 text-center">Your message has been sent successfully!</h2>
+        <p class="mb-8 text-center">Thank you for contacting us. We'll get back to you as soon as possible.</p>
     </div>
 
-    <footer class="bg-[#1a202c] mt-4  py-8">
+    <footer class="bg-[#1a202c]  py-8 mt-20">
         <div class="max-w-6xl mx-auto px-4 bg-[#1a202c]">
             <!-- Top Section -->
             <div class="flex justify-center gap-8">

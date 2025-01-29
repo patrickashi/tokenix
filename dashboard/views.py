@@ -18,6 +18,7 @@ from .models import Feedback
 from .models import BTC, DASH, Ethereum
 from .models import Invest
 from .models import Withdrawal
+from .models import Contact
 
 
 from django.contrib.auth.forms import AuthenticationForm
@@ -26,6 +27,7 @@ from .forms import FeedbackForm
 from .forms import StudentUpdateForm
 from .forms import InvestForm
 from .forms import WithdrawalForm
+from .forms import ContactForm
 
 import csv
 
@@ -281,8 +283,7 @@ def confirm_deposit(request, invest_id):
     return render(request, 'dashboard/confirm_deposit.html', {'invest': invest})
 def home(request):
     return render(request, 'home.html')
-def contact(request):
-    return render(request, 'contact.html')
+
 
 def withdraw(request):
     return render(request, 'dashboard/withdraw.html')
@@ -301,3 +302,20 @@ def withdrawal_view(request):
 
 def withdrawal_success(request):
     return render(request, 'dashboard/withdraw_success.html')
+
+def contact(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Save to the database
+        contact = Contact(email=email, message=message)
+        contact.save()
+
+        # Redirect to a success page after the form is submitted
+        return redirect('contact_success')
+
+    return render(request, 'contact.html')
+
+def contact_success(request):
+    return render(request, 'contact_success.html')

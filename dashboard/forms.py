@@ -6,6 +6,7 @@ from .models import Profile
 from .models import Feedback
 from .models import Invest
 from .models import Withdrawal
+from .models import Contact
 
 
 # class RegistrationForm(UserCreationForm):
@@ -113,3 +114,8 @@ class WithdrawalForm(forms.ModelForm):
     class Meta:
         model = Withdrawal
         fields = ['amount', 'crypto', 'wallet_address', 'description']
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['email', 'message']

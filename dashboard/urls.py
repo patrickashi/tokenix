@@ -7,7 +7,6 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('contact/', views.contact, name='contact'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('register/', views.register, name='register'),
     path('register_student/', views.register_student, name='register_student'),
@@ -27,6 +26,8 @@ urlpatterns = [
     path('confirm-deposit/<int:invest_id>/', views.confirm_deposit, name='confirm_deposit'),
     path('withdraw/', views.withdrawal_view, name='withdraw'),
     path('withdraw/success/', views.withdrawal_success, name='withdraw_success'),
+    path('contact/', views.contact, name='contact'),  # Contact form URL
+    path('contact/success/', views.contact_success, name='contact_success'),  # Success page URL (optional)
 ]
 
 if settings.DEBUG:
