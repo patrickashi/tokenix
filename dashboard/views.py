@@ -17,6 +17,7 @@ from .models import Notification
 from .models import Feedback
 from .models import BTC, DASH, Ethereum
 from .models import Invest
+from .models import Withdrawal
 
 
 from django.contrib.auth.forms import AuthenticationForm
@@ -24,6 +25,7 @@ from .forms import RegistrationForm, StudentProfileForm
 from .forms import FeedbackForm
 from .forms import StudentUpdateForm
 from .forms import InvestForm
+from .forms import WithdrawalForm
 
 import csv
 
@@ -284,3 +286,18 @@ def contact(request):
 
 def withdraw(request):
     return render(request, 'dashboard/withdraw.html')
+
+def withdrawal_view(request):
+    if request.method == 'POST':
+        form = WithdrawalForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # You could also redirect the user or provide a success message here
+            return redirect('withdraw_success')  # Change 'success_page' to your desired redirect view name
+    else:
+        form = WithdrawalForm()
+
+    return render(request, 'dashboard/withdraw.html', {'form': form})
+
+def withdrawal_success(request):
+    return render(request, 'dashboard/withdraw_success.html')

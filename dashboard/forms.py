@@ -5,6 +5,7 @@ from .models import Student
 from .models import Profile
 from .models import Feedback
 from .models import Invest
+from .models import Withdrawal
 
 
 # class RegistrationForm(UserCreationForm):
@@ -105,5 +106,10 @@ class InvestForm(forms.ModelForm):
         self.fields['crypto'].choices = [
             ('BTC', 'Bitcoin (BTC)'),
             ('ETH', 'Ethereum (ETH)'),
-            ('USDT', 'Tether (USDT)'),
+            ('USDT', 'Usdt (USDT)'),
         ]
+
+class WithdrawalForm(forms.ModelForm):
+    class Meta:
+        model = Withdrawal
+        fields = ['amount', 'crypto', 'wallet_address', 'description']

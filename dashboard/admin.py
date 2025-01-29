@@ -6,6 +6,7 @@ from .models import Feedback
 from .models import Notification
 from .models import BTC, DASH, Ethereum
 from .models import Invest
+from .models import Withdrawal
 
 # Register your models here.
 admin.site.register(Student)
@@ -17,6 +18,7 @@ admin.site.register(BTC)
 admin.site.register(DASH)
 admin.site.register(Ethereum)
 admin.site.register(Invest)
+admin.site.register(Withdrawal)
 
 #unregister groups
 admin.site.unregister(Group)

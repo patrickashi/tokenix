@@ -84,7 +84,7 @@ class Invest(models.Model):
     CRYPTO_CHOICES = [
         ('BTC', 'Bitcoin (BTC)'),
         ('ETH', 'Ethereum (ETH)'),
-        ('USDT', 'Tether (USDT)'),
+        ('USDT', 'Usdt (USDT)'),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -97,3 +97,19 @@ class Invest(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.plan} - {self.crypto}"
+    
+class Withdrawal(models.Model):
+    AMOUNT_CHOICES = [
+        ('BTC', 'Bitcoin'),
+        ('USDT', 'Usdt'),
+        ('ETH', 'Ethereum'),
+    ]
+
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=20, decimal_places=8, null=True, blank=True)
+    crypto = models.CharField(max_length=5, choices=AMOUNT_CHOICES, null=True, blank=True)
+    wallet_address = models.CharField(max_length=255, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.crypto} Withdrawal of {self.amount}"
