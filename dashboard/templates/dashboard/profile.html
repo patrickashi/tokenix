@@ -1,98 +1,73 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <h3 class="font-bold mt-4 text-gray-200">Profile</h3>
 
-
 <div class="flex flex-col md:flex-row gap-8 my-6">
-
+    <!-- Profile Sidebar: Profile Picture, Username, etc. -->
     <div class="w-full md:w-[300px] 2xl:w-[300px] xl:w-[300px] bg-[#0f172a] text-white rounded-xl py-6 px-4 cursor-pointer">
         <div class="flex justify-center mb-4">
-            {% if user.student.profile_photo %}
-                <img src="{{ user.student.profile_photo.url }}" alt="Profile Photo" class="" style="width: 100px; height: 100px; border-radius: 300px; object-fit: cover;">
+            {% if student.profile_photo %}
+                <img src="{{ student.profile_photo.url }}" alt="Profile Photo" style="width: 100px; height: 100px; border-radius: 300px; object-fit: cover;">
             {% else %}
                 <p>No profile photo.</p>
             {% endif %}
         </div>
         <div class="mb-6">
-            <h1 class="text-center font-semibold text-xl">{{ user.first_name }} {{ user.last_name}}</h1>
+            <h1 class="text-center font-semibold text-xl">{{ user.first_name }} {{ user.last_name }}</h1>
         </div>
 
+        <!-- Profile Edit Form -->
         <form method="post" enctype="multipart/form-data" class="mt-4">
             {% csrf_token %}
-            {{ profile_form }}
+            {{ profile_form.as_p }}
             <button type="submit" class="bg-[#925FE2] hover:bg-[#855cc8] duration-200 text-white rounded-sm mt-2 px-8 py-2">Save</button>
         </form>
     </div>
 
-    <div class="w-full bg-[#0f172a] text-white rounded-xl px-4 py-2 cursor-pointer ">
+    <!-- Information Section -->
+    <div class="w-full bg-[#0f172a] text-white rounded-xl px-4 py-2 cursor-pointer">
         <p class="font-bold mb-4">Information</p>
 
         <div class="flex flex-col lg:flex-row gap-2">
             <div class="mb-2">
+                <p class="font-thin">Username</p>
+                <p class="">{{ user.username }}</p>
+            </div>
+            <div class="mb-2">
                 <p class="font-thin">Name</p>
-                <p class="">{{ student.name }}</p>
+                <p class="">{{ user.first_name }} {{ user.last_name }}</p>
             </div>
-            <div>
-                <div class="mb-2">
-                    <p class="font-thin">Date of Birth</p>
-                    <p class="">{{ student.date_of_birth }}</p>
-                </div>
-                <div class="mb-2">
-                    <p class="font-thin">Gender:</p>
-                    <p class="">{{ student.gender }}</p>
-                </div>
-               
-                <div class="mb-2">
-                    <p class="font-thin">Nationality</p>
-                    <p class="">{{ student.nationality }}</p>
-                </div>
+            <div class="mb-2">
+                <p class="font-thin">Email</p>
+                <p class="">{{ user.email }}</p>
             </div>
-            <div>
-                <div class="mb-2">
-                    <p class="font-thin">Email</p>
-                    <p class="">{{ student.email }}</p>
-                </div>
-                <div class="mb-2">
-                    <p class="font-thin">Phone Number</p>
-                    <p class="">{{ student.phone_number }}</p>
-                </div>
-                <div class="mb-2">
-                    <p class="font-thin">Address</p>
-                    <p class="">{{ student.address }}</p>
-                </div>
-                <!-- Add any other fields you want to display -->
+            <div class="mb-2">
+                <p class="font-thin">Phone Number</p>
+                <p class="">{{ student.phone_number }}</p>
+            </div>
+            <div class="mb-2">
+                <p class="font-thin">Address</p>
+                <p class="">{{ student.address }}</p>
+            </div>
+            <div class="mb-2">
+                <p class="font-thin">Date of Birth</p>
+                <p class="">{{ student.date_of_birth }}</p>
+            </div>
+            <div class="mb-2">
+                <p class="font-thin">Gender</p>
+                <p class="">{{ student.get_gender_display }}</p> <!-- Display the full gender name -->
+            </div>
+            <div class="mb-2">
+                <p class="font-thin">Nationality</p>
+                <p class="">{{ student.nationality }}</p>
             </div>
         </div>
-        
-        
-        
-        
 
         <div class="my-4">
-            <a href="{% url 'update_profile' %}" class="bg-[#f59e0b] hover:bg-[#efb144] duration-200 text-white rounded-sm px-4 py-2 ">Update Profile</a>
+            <a href="{% url 'update_profile' %}" class="bg-[#f59e0b] hover:bg-[#efb144] duration-200 text-white rounded-sm px-4 py-2">Update Profile</a>
         </div>
     </div>
-
 </div>
 
-<script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-1" lcw-coin="BTC" lcw-base="USD" lcw-secondary="BTC" lcw-period="d" lcw-color-tx="#ffffff" lcw-color-pr="#fcb900" lcw-color-bg="#202334" lcw-border-w="0" ></div>
-
-    
-
-
-
-
-
-
-
-
-
 {% endblock %}
-
-
-
-
-</body>
-</html>

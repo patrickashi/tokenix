@@ -51,14 +51,19 @@ class RegistrationForm(forms.Form):
         email = self.cleaned_data['email']
         password = self.cleaned_data['password1']
 
+        # Create the User instance
         user = User.objects.create_user(username=username, email=email, password=password)
         user.first_name = first_name
         user.last_name = last_name
 
+        # Create the Student instance and associate it with the user
+        student = Student(user=user, name=f'{first_name} {last_name}', email=email)
         if commit:
             user.save()
+            student.save()  # Save student information as well
 
         return user
+
         
         
 

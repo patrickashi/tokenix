@@ -140,19 +140,24 @@ def register_student(request):
 @login_required
 def profile(request):
     try:
-        student = Student.objects.get(user=request.user)
+        student = Student.objects.get(user=request.user)  # Retrieve the Student instance
     except Student.DoesNotExist:
         messages.error(request, 'Profile does not exist.')
         return redirect('dashboard')  # Redirect to the dashboard or another appropriate page
     
+    # Get the user instance
+    user = request.user
+
     if request.method == 'POST':
-        profile_form = StudentProfileForm(request.POST, request.FILES, instance=request.user.student)
+        profile_form = StudentProfileForm(request.POST, request.FILES, instance=student)
         if profile_form.is_valid():
             profile_form.save()
             return redirect('profile')
     else:
-        profile_form = StudentProfileForm(instance=request.user.student)
-        
+        profile_form = StudentProfileForm(instance=student)
+
+    return render(request, 'dashboard/profile.html', {'student': student, 'profile_form': profile_form, 'user': user})
+
     
     
     context = {'student': student, 'profile_form': profile_form}
